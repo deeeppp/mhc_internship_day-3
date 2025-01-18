@@ -1,0 +1,13 @@
+{%extends 'food.html' %}
+ 
+{% block title %}Delete Grocery Item{% endblock %} 
+ 
+{% block content %} 
+<h1>Confirm Deletion</h1> 
+<p>Are you sure you want to delete <strong>{{ groc.name }}</strong>?</p> 
+<form method="post"> 
+    {% csrf_token %} 
+    <button type="submit" class="btn btn-outline-danger">Yes, Delete</button> 
+    <a href="{% url 'groc_list' %}"class="btn btn-outline-info">Cancel</a> 
+</form> 
+{% endblock %} 

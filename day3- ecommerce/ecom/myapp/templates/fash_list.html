@@ -1,0 +1,39 @@
+{%extends 'fash.html' %}
+
+ 
+{% block title %}Fashion{% endblock %} 
+ 
+{% block content %}
+<h1 class="mb-4">Fashion</h1> 
+<br>
+<a href="{% url 'fash_add' %}" class="btn btn-outline-info mb-3">Add New Item</a> 
+<table class="table table-striped table-hover"> 
+ 
+    <thead class="table-dark"> 
+
+        <tr> 
+      
+            <th>Name</th> 
+            <th>Price</th> 
+            <th>Brand</th>
+            <th>Color</th>
+            <th>Actions</th>
+        </tr> 
+    </thead> 
+    <tbody> 
+        {% for fash in fash %} 
+        <tr> 
+            <td>{{ fash.name }}</td> 
+            <td>{{ fash.price }}</td> 
+            <td>{{ fash.brand}}</td> 
+            <td>{{ fash.color }}</td>     
+            <td> 
+                <a href="{% url 'fash_edit' fash.pk %}" class="btn btn-warning btnsm">Edit</a> 
+                <a href="{% url 'fash_delete' fash.pk %}" class="btn btn-outline-danger">Delete</a> 
+                
+            </td> 
+        </tr> 
+        {% endfor %} 
+    </tbody> 
+</table> 
+{% endblock %} 

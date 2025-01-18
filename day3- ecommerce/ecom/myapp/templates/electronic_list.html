@@ -1,0 +1,35 @@
+{%extends 'elect.html' %}
+
+ 
+{% block title %}Electronics{% endblock %} 
+ 
+{% block content %}
+<h1 class="mb-4">Product  List</h1> 
+<a href="{% url 'electronics_add' %}" class="btn btn-outline-info mb-3">Add New Product</a> 
+<table class="table table-striped table-hover"> 
+    <thead class="table-dark"> 
+        <tr> 
+            <th>Name</th> 
+            <th>Color</th> 
+            <th>Brand</th> 
+            <th>Price</th>  
+            <th>Actions</th>
+        </tr> 
+    </thead> 
+    <tbody> 
+        {% for elec in elec %} 
+        <tr> 
+            <td>{{ elec.name }}</td> 
+            <td>{{ elec.color }}</td> 
+            <td>{{ elec.brand}}</td> 
+            <td>{{ elec.price }}</td> 
+            <td> 
+                <a href="{% url 'electronics_edit' elec.pk %}" class="btn btn-warning btnsm">Edit</a> 
+                <a href="{% url 'electronics_delete' elec.pk %}" class="btn btn-outline-danger">Delete</a> 
+                
+            </td> 
+        </tr> 
+        {% endfor %} 
+    </tbody> 
+</table> 
+{% endblock %} 

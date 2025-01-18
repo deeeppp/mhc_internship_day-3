@@ -1,0 +1,33 @@
+{% extends 'fash.html' %} 
+ 
+{% block title %}{% if fash %}Edit{% else %}Add{% endif %} Item{% endblock %} 
+ 
+{% block content %} 
+<h1>{% if fash %}Edit{% else %}Add{% endif %} Item</h1> 
+<form method="post" class="row g-3"> 
+    {% csrf_token %} 
+  
+    <div class="col-md-6"> 
+        <label for="Name" class="form-label">Design</label> 
+        <input type="text" name="name" class="form-control" value="{{fash.name|default:'' }}"required> 
+    </div> 
+    
+    <div class="col-md-6"> 
+        <label for="price" class="form-label"> Price</label> 
+        <input type="text" name="price" class="form-control" value="{{ fash.price|default:'' }}" required> 
+    </div> 
+    <div class="col-md-6"> 
+     <label for="brand" class="form-label">Size</label> 
+     <input type="text" name="brand" class="form-control" value="{{ fash.brand|default:'' }}" required> 
+ </div>
+
+<div class="col-md-6"> 
+ <label for="color" class="form-label">Brand</label> 
+ <input type="text" name="color" class="form-control" value="{{ fash.color|default:'' }}" required> 
+</div>
+
+    <div class="col-12"> 
+        <button type="submit" class="btn btn-outline-success">Save</button> 
+        <a href="{% url 'fash_list' %}" class="btn btn-outline-danger">Cancel</a>     </div> 
+</form> 
+{% endblock %} 

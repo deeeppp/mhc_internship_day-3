@@ -1,0 +1,31 @@
+{% extends 'elect.html' %} 
+ 
+{% block title %}{% if elec %}Edit{% else %}Add{% endif %} Product{% endblock %} 
+ 
+{% block content %} 
+<h1>{% if elec %}Edit{% else %}Add{% endif %} Product</h1> 
+<form method="post" class="row g-3"> 
+    {% csrf_token %} 
+    <div class="col-md-6"> 
+        <label for="name" class="form-label">Device Name</label> 
+        <input type="text" name="name" class="form-control" value="{{elec.name|default:'' }}" required> 
+    </div> 
+    <div class="col-md-6"> 
+        <label for="color" class="form-label">Color</label> 
+        <input type="text" name="Color" class="form-control" value="{{elec.color|default:'' }}"required> 
+    </div> 
+    <div class="col-md-6"> 
+        <label for="brand" class="form-label">Email</label> 
+        <input type="text" name="brand" class="form-control" value="{{elec.brand|default:'' }}" required> 
+    </div> 
+  
+    <div class="col-md-6"> 
+        <label for="Price" class="form-label">Price </label> 
+        <input type="text" name="Price" class="form-control" value="{{ elec.Price|default:'' }}" required> 
+    </div> 
+   
+    <div class="col-12"> 
+        <button type="submit" class="btn btn-outline-success">Save</button> 
+        <a href="{% url 'electronics_list' %}" class="btn btn-outline-danger">Cancel</a>     </div> 
+</form> 
+{% endblock %} 

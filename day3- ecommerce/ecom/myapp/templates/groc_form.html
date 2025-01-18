@@ -1,0 +1,27 @@
+{% extends 'groc.html' %} 
+ 
+{% block title %}{% if foods %}Edit{% else %}Add{% endif %} FoodItem{% endblock %} 
+ 
+{% block content %} 
+<h1>{% if groc %}Edit{% else %}Add{% endif %} Item</h1> 
+<form method="post" class="row g-3"> 
+    {% csrf_token %} 
+    <div class="col-md-6"> 
+        <label for="name" class="form-label">Item</label> 
+        <input type="text" name="name" class="form-control" value="{{groc.name|default:'' }}" required> 
+    </div> 
+    <div class="col-md-6"> 
+        <label for="price" class="form-label">Price</label> 
+        <input type="text" name="price" class="form-control" value="{{groc.price|default:'' }}"required> 
+    </div> 
+    
+    <div class="col-md-6"> 
+        <label for="quantity" class="form-label">Quantity</label> 
+        <input type="text" name="BreakFast" class="form-control" value="{{ groc.quantity|default:'' }}" required> 
+    </div> 
+
+    <div class="col-12"> 
+        <button type="submit" class="btn btn-outline-success">Save</button> 
+        <a href="{% url 'groc_list' %}" class="btn btn-outline-danger">Cancel</a>     </div> 
+</form> 
+{% endblock %} 
